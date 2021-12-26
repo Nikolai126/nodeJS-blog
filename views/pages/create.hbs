@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/create-style.css">
+    <script src="/styles/style-burger.js" defer></script>
+    <title>Создать пост</title>
+</head>
+<body>
+    <div class="header">
+        <div class="burger-container">
+            <div class="header-burger">
+                <span></span>
+            </div>
+        </div>
+        <nav class="header-menu">
+            <ul class="header-list">
+                <li><a href="/index">Главная</a></li>
+            </ul>
+        </nav>
+        <h1 class="the-food">THEFOOD</h1>
+        {{#if email}}
+            <h6 class="user-mail">{{email}}</h6>
+        {{/if}}
+    </div>
+
+    <div class="post-container">
+        <div class="post-photo">
+            <div class="add-photo">+<br>Добавить фото</div>
+            <label for="imageId" class="add-photo" style="cursor: pointer;">+<br>Добавить фото</label>
+            <input type="file" class="input-photo" name="image" id="imageId">
+        </div>
+        <div class="post-description">
+            <div class="post-title">
+                <input type="text" maxlength="50" class="title" placeholder="Название поста" required>
+            </div>
+            <div class="post-information">
+                <textarea id="postInform" cols="30" rows="10" maxlength="1100" placeholder="Информация о посте" maxlength="1100" class="information" required></textarea>
+            </div>
+        </div>
+        <div class="post-tags">
+            <input type="text" placeholder="Добавьте теги через запятую, если это необходимо" class="tags" maxlength="150">
+        </div>
+        <button type="submit" class="btn">Создать</button>
+        <div class="post-footer"></div>
+    </div>
+</body>
+</html>

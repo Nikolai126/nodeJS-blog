@@ -1,0 +1,343 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    min-width: 340px;
+}
+
+.header {
+    position: relative;
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.header:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #DFDDDB;
+    z-index: 3;
+}
+
+.burger-container {
+    background-color: #fff;
+    width: 50px;
+    height: 40px;
+    z-index: 4;
+    margin: 5px 0px 5px 30px; 
+    border-radius: 7px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.header-burger {
+    margin: 10px;
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    z-index: 3;
+}
+
+.header-burger span {
+    position: absolute;
+    background-color: #AFAAAA;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 30px;
+    top: 9px;
+    transition: all 0.3s ease 0s;
+}
+.header-burger:before, .header-burger:after {
+    content: '';
+    background-color: #AFAAAA;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 30px;
+    left: 0;
+    transition: all 0.3s ease 0s;
+}
+.header-burger.active span {
+    transform: scale(0);
+}
+.header-burger.active:before {
+    transform: rotate(45deg);
+    top: 9px;
+}
+.header-burger.active:after {
+    transform: rotate(-45deg);
+    bottom: 9px;
+}
+.header-burger:before {
+    top: 0;
+}
+.header-burger:after {
+    bottom: 0;
+}
+
+.header-menu {
+    padding: 0px 10px 20px 10px;
+    position: fixed;
+    top: -150%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease 0s;
+}
+
+.header-menu.active {
+    top: 0;
+    padding: 50px 10px 20px 33px;
+    animation-name: back-blur;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.2s;
+}
+
+.header-list {
+    display: block;
+    position: relative;
+    list-style-type: none;
+    z-index: 2;
+    padding-inline-start: 0px;
+}
+
+.header-list li a{
+    display: block;
+    width: 250px;
+    margin: 0px 0 3px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #3F3E6F;
+    padding: 15px;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    user-select: none;
+}
+
+.the-food {
+    z-index: 5;
+    margin: auto auto;
+    height: 50px;
+    color: #3F3E6F;
+    font-family: El Messiri;
+    font-size: 36px;
+    user-select: none;
+}
+
+.user-mail {
+    position: absolute;
+    margin: 16px 0px 10px 110px;
+    height: 20px; 
+    width: 150px; 
+    color: rgb(77, 77, 77); 
+    z-index: 5;
+    font-family: Arial;
+    font-size: 14px;
+}
+
+.navbar {
+    display: block;
+    width: 250px;
+}
+
+.photo {
+    width: 100%;
+    height: 350px;
+    display: block;
+    position: relative;
+}
+
+.main-photo {
+    display: block;
+    width: 100%;
+    height: 300px;
+    margin-top: 50px;
+    object-fit: cover;
+    position: absolute;
+    min-width: 355px;
+}
+
+.text-culinar {
+    position: absolute;
+    display: inline;
+    width: 100%;
+    z-index: 2;
+    color: #fff;
+    margin-top: 150px;
+    text-align: center;
+    font-family: Nova Flat;
+    letter-spacing: 10px;
+    font-size: 43px;
+}
+
+.tags {
+    width: 70%;
+    margin: 30px auto 0 auto;
+    text-align: center;
+}
+
+.tag {
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    width: auto;
+    padding: 6px 18px 6px;
+    font-family: Arial;
+    border-radius: 30px;
+    background-color: #ffcb3b;
+    margin-bottom: 7px;
+}
+
+.posts {
+    width: 100%;
+    margin: 0 auto;
+}
+@media (max-width: 1190px) {
+    .posts {
+        width: 100%;
+    }
+}
+
+.col-sm-6 {
+    width: 300px;
+}
+
+.post-container {
+    width: 300px;
+    min-width: 300px;
+    height: 400px;
+    background-color: #F2F2F2;
+    overflow: hidden;
+    margin: 30px auto;
+    box-shadow: 0 0 10px 10px rgb(165, 165, 165);
+}
+
+.post-photo {
+    display: block;
+    height: 200px;
+}
+
+.photo-in-post {
+    width: 300px; 
+    height: 200px;
+}
+
+.post-description {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 90px;
+}
+
+.post-title {
+    word-break: break-all;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 15px 0px 15px;
+}
+
+.post-information {
+    word-break: break-all;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 7px 15px;
+}
+
+.read-full {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.post-tags {
+    text-align: center;
+    margin: 0px 7px;
+    height: 70px;
+}
+
+.tag-in-post {
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    width: auto;
+    padding: 4px 6px;
+    font-family: Arial;
+    font-size: 13px;
+    border-radius: 30px;
+    background-color: #ffcb3b;
+    margin-bottom: 7px;
+}
+
+.post-footer {
+    display: flex;
+    height: 22px;
+    justify-content: space-between;
+}
+
+.author {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 13px;
+    margin: auto 10px;
+    font-style: italic;
+    color: rgb(146, 145, 145);
+}
+
+.day {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 13px;
+    margin: auto 10px;
+    font-style: italic;
+    color: rgb(146, 145, 145);
+}
+
+.paginat {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page-true {
+    user-select: none;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: gray;
+    color: #fff;
+    line-height: 40px;
+    border-radius: 50%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.page {
+    user-select: none;
+    cursor: pointer;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: #3F3E6F;
+    color: #fff;
+    line-height: 40px;
+    border-radius: 50%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}

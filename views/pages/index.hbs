@@ -1,0 +1,72 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="stylesheet" href="/styles/main-style.css">
+    <link rel="stylesheet" href="/styles/bootstrap-grid.css">
+    <script src="/styles/style-burger.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <div class="burger-container">
+            <div class="header-burger">
+                <span></span>
+            </div>
+        </div>
+        <nav class="header-menu">
+            <ul class="header-list">
+                <li><a style="background-color: #383838;">Главная</a></li>
+                {{#if name}}
+                    <li><a href="/index/create">Создать пост {{name}}</a></li>
+                {{else}}
+                    <li><a href="/loginAuth/login">Вход/Регистрация</a></li>
+                {{/if}}
+            </ul>
+        </nav>
+        <h1 class="the-food">THEFOOD</h1>
+        {{#if name}}
+            <h6 class="user-mail">{{name}}</h6>
+        {{/if}}
+    </div>
+    <div class="photo">
+        <img src="/img/main-back.png" alt="IMG" class="main-photo">
+        <h1 class="text-culinar">Кулинарный блог</h1>
+    </div>
+    <div class="tags">
+        {{#each tags}}
+            <div class="tag"><a href="/index/:tag">{{tag}}</a></div>
+        {{/each}}
+    </div>
+    <div class="posts">
+        <div class="row">
+            {{#each posts}}
+                <div class="col-xl-4 col-sm-6 col-md-6">
+                    <div class="post-container">
+                        <div class="post-photo">
+                            {{#if this.imageExists}}
+                            <img src="/public/img/{{this.id}}.jpg" class="photo-in-post" alt="Image of post">
+                            {{else}}
+                            <img src="https://via.placeholder.com/150" class="photo-in-post" alt="Image of post">
+                            {{/if}}
+                        </div>
+                        <div class="post-description">
+                            <div class="post-title">{{this.title}}</div>
+                            <div class="post-information">{{this.description}}   <a class="read-full" href="/post/:{{this.id}}">Читать полностью</a></div>
+                        </div>
+                        <div class="post-tags">
+                            <div class="tag-in-post">Первое</div>
+                        </div>
+                        <hr class="horizontal">
+                        <div class="post-footer">
+                            <div class="author">{{this.author}}</div>
+                            <div class="day">{{this.date}}</div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div> 
+    </div>
+</body>
+</html>

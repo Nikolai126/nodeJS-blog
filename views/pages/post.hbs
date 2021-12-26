@@ -1,0 +1,58 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/post-style.css">
+    <script src="/styles/style-burger.js" defer></script>
+    <title>Пост</title>
+</head>
+<body>
+
+    <div class="header">
+        <div class="burger-container">
+            <div class="header-burger">
+                <span></span>
+            </div>
+        </div>
+        <nav class="header-menu">
+            <ul class="header-list">
+                <li><a href="/index">Главная</a></li>
+                {{#if name}}
+                <li><a href="/index/create">Создать пост</a></li>
+                {{else}}
+                <li><a href="/loginAuth/login">Вход/Регистрация</a></li>
+                {{/if}}
+            </ul>
+        </nav>
+        <h1 class="the-food">THEFOOD</h1>
+        {{#if login}}
+            <h6 class="user-mail">{{email}}</h6>
+        {{/if}}
+    </div>
+
+    <div class="post-container">
+        <div class="post-photo">
+            {{#if post.imageExists}}
+            <img src="/dbImg/{{post.id}}.jpg" alt="img" class="photo-in-post">
+            {{else}}
+            <img src="https://via.placeholder.com/150" class="photo-in-post" alt="Image of post">
+            {{/if}}
+        </div>
+        <div class="post-description">
+            <div class="post-title">{{post.title}}</div>
+            <div class="post-information">{{post.description}}</div>
+        </div>
+        <div class="post-tags">
+            {{#each tag}}
+            <div class="tag-in-post">{{post.tag}}</div>
+            {{/each}}
+        </div>
+        <hr class="horizontal">
+        <div class="post-footer">
+            <div class="author">{{post.author}}</div>
+            <div class="day">{{post.date}}</div>
+        </div>
+    </div>
+</body>
+</html>
