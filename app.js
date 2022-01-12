@@ -4,8 +4,8 @@ const path = require('path');
 const hbs = require('hbs');
 const session = require('express-session');
 const passport = require('passport');
-const flashMsg = require('express-flash-messages')
-// const flashMsg = require('express-flash-messages');
+const flashMsg = require('express-flash-messages');
+const paginationHelper = require('./paginationPosts');
 
 // mongoose.connect(keys.mongoURI)
 //     .then(() => {
@@ -27,6 +27,10 @@ const secretSession = 'secret';
 
 app.set('views', path.join(__dirname, 'views', 'pages'));
 app.set('view engine', 'hbs');
+hbs.registerHelper('paginat', paginationHelper.newPagination);
+hbs.registerHelper('shortDesc', function(description) {
+    return description.substring(0, 40) + '...'
+});
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -50,13 +54,11 @@ app.use((req, res, next) => {
 });
 
 app.use(passport.initialize());
-console.log('init Passport');
 
 app.use(passport.session());
 app.use(flashMsg());
 
 app.use('/', router);
-
 
 // app.get('/', (req, res) => {
 //     res.render('main', {
@@ -66,8 +68,6 @@ app.use('/', router);
 
 // app.use('/api/post', postRouter);
 // app.use(express.static(mainPath));
-
-
 
 app.listen(port, () => {
     console.log(`Server has been started on port ${port}`);

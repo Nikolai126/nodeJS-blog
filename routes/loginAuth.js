@@ -16,12 +16,12 @@ const router = express.Router();
 router.get('/registration', checkNoLogin, loginController.registrPage);
 router.post('/registration', checkNoLogin, registerValid, loginController.createNewUser);
 router.get('/login', checkNoLogin, loginController.loginPage);
-    router.post('/login', checkNoLogin, loginValid, loginController.loginValidMessage, passport.authenticate('local', {
+router.post('/loginAuth/login', checkNoLogin, loginValid, loginController.loginValidMessage, passport.authenticate('local', {
     successRedirect: '/index',
     failureRedirect: '/loginAuth/login',
     failureFlash: true
 }));
 
-// router.post('/logout', checkYesLogin, loginController.SessOut);
+router.post('/logout', checkYesLogin, loginController.SessOut);
 
 module.exports = router;

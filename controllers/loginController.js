@@ -21,6 +21,7 @@ class loginController {
 
     loginPage(req, res) {
         const flashMsg = res.locals.getMessages();
+        console.log('flashMsg', flashMsg);
         if(flashMsg.error) {
             res.render('login', {
                 showError: true,
@@ -34,10 +35,10 @@ class loginController {
 
     createNewUser(req, res) {
         const userData = req.body;
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
+        const errorValid = validationResult(req);
+        if (!errorValid.isEmpty()) {
             req.session.message = {
-                msg: JSON.stringify(errors.array()[0].msg)
+                msg: JSON.stringify(errorValid.array()[0].msg)
             }
             return res.redirect('/loginAuth/registration')
         }
@@ -52,7 +53,7 @@ class loginController {
 
     SessOut(req, res) {
         req.logOut();
-        res.redirect('/login');
+        res.redirect('/index');
     }
 }
 

@@ -1,33 +1,6 @@
 // const mongoose = require('mongoose');
 // const Schema = mongoose.Schema;
 
-// const postSchema = new Schema({
-//     photo: {
-//         type: String
-//     },
-//     title: {
-//         type: String,
-//         required: true
-//     },
-//     text: {
-//         type: String,
-//         required: true
-//     },
-//     tag: {
-//         type: String
-//     },
-//     author: {
-//         type: String,
-//         required: true
-//     },
-//     authorId:
-//     date: {
-//         type: Date,
-//         default: dateExist
-//     }
-
-// })
-
 // module.exports = mongoose.model('posts', postSchema);
 
 const dbPosts = `${__dirname}/../DataBase/posts.json`;
@@ -77,6 +50,7 @@ class modelPost {
             return days[nowDay];
         }
 
+        console.log('postDataTags', postData.tags);
         const thisUser = modelUser.findById(user.id);
         const { data } = this.allData();
         const newPost = {
@@ -84,7 +58,8 @@ class modelPost {
             title: postData.title,
             description: postData.description,
             tags: [...postData.tags.split(',')],
-            imageExists: file,
+            tags: !!postData.tags[0] ? [...postData.tags.split(',')] : [],
+            imageExists: file ? true : false,
             author: thisUser.name,
             authorId: thisUser.id,
             date: dateExist()

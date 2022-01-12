@@ -11,9 +11,9 @@ const fileUpload = require('./mdware/fileUpload');
 const router = express.Router();
 
 router.get('/', postController.getAllPosts);
-router.get('/create', checkYesLogin, postController.createPage);
+router.get('/new', checkYesLogin, postController.createPage);
 router.get('/:id', postController.getPost);
-router.get('/:tag', postController.getPostByTag)
+router.get('/filter/:tag', postController.getPostByTag)
 
 router.post('/', checkYesLogin, uuId, fileUpload.single('image'), postValidate, postController.createNewPost);
 

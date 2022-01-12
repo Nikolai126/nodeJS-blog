@@ -4,11 +4,10 @@
     margin: 0;
 }
 body {
-    min-width: 340px;
+    min-width: 355px;
 }
 
 .header {
-    position: relative;
     display: flex;
     position: fixed;
     width: 100%;
@@ -127,6 +126,21 @@ body {
     user-select: none;
 }
 
+.btn-log-out {
+    display: block;
+    width: 250px;
+    margin: 0px 0 3px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #111133;
+    padding: 15px;
+    color: #fff;
+    font-size: 16px;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 10px;
+    border-width: 0px;
+}
+
 .the-food {
     z-index: 5;
     margin: auto auto;
@@ -146,6 +160,20 @@ body {
     z-index: 5;
     font-family: Arial;
     font-size: 14px;
+}
+
+@media (max-width: 500px) {
+    .user-mail {
+        position: absolute;
+        right: 0;
+        margin: 16px 0px 10px 0px;
+        height: 20px; 
+        width: 60px; 
+        color: rgb(77, 77, 77); 
+        z-index: 5;
+        font-family: Arial;
+        font-size: 11px;
+    }
 }
 
 .navbar {
@@ -200,15 +228,8 @@ body {
     background-color: #ffcb3b;
     margin-bottom: 7px;
 }
-
-.posts {
+.row {
     width: 100%;
-    margin: 0 auto;
-}
-@media (max-width: 1190px) {
-    .posts {
-        width: 100%;
-    }
 }
 
 .col-sm-6 {
@@ -218,7 +239,7 @@ body {
 .post-container {
     width: 300px;
     min-width: 300px;
-    height: 400px;
+    height: 450px;
     background-color: #F2F2F2;
     overflow: hidden;
     margin: 30px auto;
@@ -231,6 +252,7 @@ body {
 }
 
 .photo-in-post {
+    object-fit: cover;
     width: 300px; 
     height: 200px;
 }
@@ -239,7 +261,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 300px;
-    height: 90px;
+    height: 120px;
 }
 
 .post-title {
@@ -259,14 +281,14 @@ body {
 }
 
 .read-full {
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer;
 }
 
 .post-tags {
     text-align: center;
     margin: 0px 7px;
-    height: 70px;
+    height: 90px;
 }
 
 .tag-in-post {
@@ -280,6 +302,11 @@ body {
     border-radius: 30px;
     background-color: #ffcb3b;
     margin-bottom: 7px;
+}
+.tag-in-post a {
+    color: #111;
+    text-decoration: none;
+    font-family: Arial;
 }
 
 .post-footer {
@@ -317,9 +344,11 @@ body {
 
 .page-true {
     user-select: none;
-    display: inline-block;
+    display: inline;
     height: 40px;
     width: 40px;
+    padding: 15px;
+    text-decoration: none;
     background-color: gray;
     color: #fff;
     line-height: 40px;
@@ -331,9 +360,11 @@ body {
 .page {
     user-select: none;
     cursor: pointer;
-    display: inline-block;
+    display: inline;
     height: 40px;
     width: 40px;
+    padding: 15px;
+    text-decoration: none;
     background-color: #3F3E6F;
     color: #fff;
     line-height: 40px;

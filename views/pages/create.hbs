@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,33 +17,51 @@
         <nav class="header-menu">
             <ul class="header-list">
                 <li><a href="/index">Главная</a></li>
+                {{#if name}}
+                <li>
+                    <form action="/loginAuth/logout" method="POST">
+                        <button type="submit" class="btn-log-out">Выйти из системы</button>
+                    </form>
+                </li>
+                {{/if}}
             </ul>
         </nav>
         <h1 class="the-food">THEFOOD</h1>
-        {{#if email}}
-            <h6 class="user-mail">{{email}}</h6>
+        {{#if name}}
+            <h6 class="user-mail">{{name}}</h6>
         {{/if}}
     </div>
+    {{#if showError}}
+        <div style="background-color: white; text-align: center; color:red" class="alert alert-danger">
+            <h5>{{errorValid}}</h5>
+        </div>
+    {{/if}}
+    {{#if message}}
+        <div style="background-color: white; text-align: center; color:red" class="alert alert-danger">
+            <h5>{{message.msg}}</h5>
+        </div>
+    {{/if}}
 
     <div class="post-container">
-        <div class="post-photo">
-            <div class="add-photo">+<br>Добавить фото</div>
-            <label for="imageId" class="add-photo" style="cursor: pointer;">+<br>Добавить фото</label>
-            <input type="file" class="input-photo" name="image" id="imageId">
-        </div>
-        <div class="post-description">
-            <div class="post-title">
-                <input type="text" maxlength="50" class="title" placeholder="Название поста" required>
+        <form action="/index" method="post" enctype="multipart/form-data">
+            <div class="post-photo">
+                <label for="imageId" class="add-photo" style="cursor: pointer;">+<br>Добавить фото</label>
+                <input type="file" class="input-photo" name="image" id="imageId">
             </div>
-            <div class="post-information">
-                <textarea id="postInform" cols="30" rows="10" maxlength="1100" placeholder="Информация о посте" maxlength="1100" class="information" required></textarea>
+            <div class="post-description">
+                <div class="post-title">
+                    <input type="text" name="title" maxlength="50" class="title" placeholder="Название поста" required>
+                </div>
+                <div class="post-information">
+                    <textarea name="description" placeholder="Информация о посте (min: 50 символов)" maxlength="1100" id="description" cols="30" rows="10" class="information" required></textarea>
+                </div>
             </div>
-        </div>
-        <div class="post-tags">
-            <input type="text" placeholder="Добавьте теги через запятую, если это необходимо" class="tags" maxlength="150">
-        </div>
-        <button type="submit" class="btn">Создать</button>
-        <div class="post-footer"></div>
+            <div class="post-tags">
+                <input type="text" name="tags" maxlength="70" placeholder="Добавьте теги через запятую, если это необходимо" class="tags">
+            </div>
+            <button type="submit" class="btn" enctype="multipart/form-data">Создать</button>
+            <div class="post-footer"></div>
+        </form>
     </div>
 </body>
 </html>

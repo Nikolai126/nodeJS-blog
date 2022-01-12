@@ -1,15 +1,15 @@
 const multer = require('multer');
 // const postModel = require('../../models/Post');
 
-const fileStorageEngine = multer.diskStorage({
+const storageConfig = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, './public/img');
+        cb(null, 'public/dbimg');
     },
     filename: function(req, file, cb) {
         cb(null, req.uuId + '.jpg');
     }
 });
 
-// fileUpload = multer({des: fileStorageEngine});
+// fileUpload = multer({des: StorageEngine});
 
-module.exports = fileUpload = multer({storage: fileStorageEngine});
+module.exports = fileUpload = multer({storage: storageConfig});

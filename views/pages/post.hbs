@@ -19,15 +19,20 @@
             <ul class="header-list">
                 <li><a href="/index">Главная</a></li>
                 {{#if name}}
-                <li><a href="/index/create">Создать пост</a></li>
+                <li><a href="/index/new">Создать пост</a></li>
+                <li>
+                    <form action="/loginAuth/logout" method="POST">
+                        <button type="submit" class="btn-log-out">Выйти из системы</button>
+                    </form>
+                </li>
                 {{else}}
                 <li><a href="/loginAuth/login">Вход/Регистрация</a></li>
                 {{/if}}
             </ul>
         </nav>
         <h1 class="the-food">THEFOOD</h1>
-        {{#if login}}
-            <h6 class="user-mail">{{email}}</h6>
+        {{#if name}}
+            <h6 class="user-mail">{{name}}</h6>
         {{/if}}
     </div>
 
@@ -44,8 +49,8 @@
             <div class="post-information">{{post.description}}</div>
         </div>
         <div class="post-tags">
-            {{#each tag}}
-            <div class="tag-in-post">{{post.tag}}</div>
+            {{#each post.tags}}
+            <div class="tag-in-post">{{this}}</div>
             {{/each}}
         </div>
         <hr class="horizontal">

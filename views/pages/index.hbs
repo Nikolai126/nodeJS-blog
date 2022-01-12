@@ -19,7 +19,12 @@
             <ul class="header-list">
                 <li><a style="background-color: #383838;">Главная</a></li>
                 {{#if name}}
-                    <li><a href="/index/create">Создать пост {{name}}</a></li>
+                    <li><a href="/index/new">Создать пост</a></li>
+                    <li>
+                        <form action="/loginAuth/logout" method="POST">
+                            <button type="submit" class="btn-log-out">Выйти из системы</button>
+                        </form>
+                    </li>
                 {{else}}
                     <li><a href="/loginAuth/login">Вход/Регистрация</a></li>
                 {{/if}}
@@ -35,28 +40,32 @@
         <h1 class="text-culinar">Кулинарный блог</h1>
     </div>
     <div class="tags">
-        {{#each tags}}
-            <div class="tag"><a href="/index/:tag">{{tag}}</a></div>
+        {{#each posts}}
+            {{#each tags}}
+            <a class="tag" href="index/filter/{{this}}" style="text-decoration: none; color: #111">{{this}}</a>
+            {{/each}}
         {{/each}}
     </div>
     <div class="posts">
         <div class="row">
             {{#each posts}}
-                <div class="col-xl-4 col-sm-6 col-md-6">
+                <div class="col-xl-3 col-sm-6 col-md-6">
                     <div class="post-container">
                         <div class="post-photo">
                             {{#if this.imageExists}}
-                            <img src="/public/img/{{this.id}}.jpg" class="photo-in-post" alt="Image of post">
+                            <img src="/dbimg/{{this.id}}.jpg" class="photo-in-post" alt="Image of post">
                             {{else}}
                             <img src="https://via.placeholder.com/150" class="photo-in-post" alt="Image of post">
                             {{/if}}
                         </div>
                         <div class="post-description">
                             <div class="post-title">{{this.title}}</div>
-                            <div class="post-information">{{this.description}}   <a class="read-full" href="/post/:{{this.id}}">Читать полностью</a></div>
+                            <div class="post-information">{{shortDesc this.description}}   <a class="read-full" href="/index/{{this.id}}">Показать полностью</a></div>
                         </div>
                         <div class="post-tags">
-                            <div class="tag-in-post">Первое</div>
+                            {{#each tags}}
+                            <span class="tag-in-post" href="index/filter/{{this}}"><a href="index/filter/{{this}}">{{this}}</a></span>
+                            {{/each}}
                         </div>
                         <hr class="horizontal">
                         <div class="post-footer">
@@ -68,5 +77,6 @@
             {{/each}}
         </div> 
     </div>
+    {{{ paginat pagination }}}
 </body>
 </html>
