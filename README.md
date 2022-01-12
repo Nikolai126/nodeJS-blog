@@ -1,1 +1,1 @@
-Запуск сервера: npm start dev
+Запуск сервера: npm run start
